@@ -41,7 +41,7 @@ class ProjectController extends Controller
     public function index(Request $request) : JsonResponse|View
     {
         if ($request->ajax()) {
-         return  $this->projectService->getProjectDetails();
+          return  $this->projectService->getProjectDetails();
         }
 
         return view('projects.index');
