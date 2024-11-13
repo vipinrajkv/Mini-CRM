@@ -1,73 +1,73 @@
 <?php
 namespace App\Services;
-use App\Repositories\UserRepository;
-use App\Models\User;
+use App\Repositories\ClientRepository;
+use App\Models\Client;
 use Illuminate\Http\JsonResponse;
 use DataTables;
-class UserService
+class ClientService
 {
-    protected $userRepository;
+    protected $clientRepository;
 
     /**
-     * UserService Constructor
+     * ClientService Constructor
      *
-     * @param UserRepository $userRepository
+     * @param ClientRepository $clientRepository
      */
-    public function __construct(UserRepository $userRepository) {
-        $this->userRepository = $userRepository;
+    public function __construct(ClientRepository $clientRepository) {
+        $this->clientRepository = $clientRepository;
     }
 
     /**
-     * User create
+     * Client create
      *
      * @param array $data
      * @return void
      */
     public function create(array $data)
     {
-        return $this->userRepository->create($data);
+        return $this->clientRepository->create($data);
     }
 
     /**
-     * user update
+     * Client update
      *
      * @param array $data
-     * @param User $user
+     * @param Client $client
      * @return void
      */
-    public function update(array $data, User $user)
+    public function update(array $data, Client $client)
     {
 
-        return $this->userRepository->update($data, $user);
+        return $this->clientRepository->update($data, $client);
     }
 
     /**
-     * user update
+     * Client update
      *
      * @param array $data
-     * @param User $user
+     * @param Client $client
      * @return void
      */
-    public function delete(User $user)
+    public function delete(Client $client)
     {
-        return $this->userRepository->delete($user);
+        return $this->clientRepository->delete($client);
     }
 
 
     /**
-    * User Details
+    * Client Details
     *
     * @param array $data
     * @return void
     */
-    public function getUserDetails() : JsonResponse
+    public function getClientDetails() : JsonResponse
     {
-        $data = User::query();
+        $data = Client::query();
         
         return Datatables::of($data)
             ->addIndexColumn()
-            // ->addColumn('user', function ($row) {
-            //     return $row->user->name ?? 'N/A';
+            // ->addColumn('Client', function ($row) {
+            //     return $row->Client->name ?? 'N/A';
             // })
             // ->addColumn('client', function ($row) {
             //     return $row->client->client_name ?? 'N/A';

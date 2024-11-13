@@ -23,7 +23,9 @@ Route::get('/task', [App\Http\Controllers\TaskController::class, 'index'])->name
 
 Route::middleware(['auth', 'role:admin'])->group(function (){
 // Route::get('/projects', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects.index');
-Route::resource('projects', ProjectController::class);
+Route::resource('projects', App\Http\Controllers\ProjectController::class);
+Route::resource('users', App\Http\Controllers\UserController::class);
+Route::resource('clients', App\Http\Controllers\ClientController::class);
 });
 Auth::routes();
 

@@ -25,7 +25,6 @@ class TaskController extends Controller
         Client $client,
         Project $project,
     ) {
-        // $this->middleware('auth');
         $this->taskService = $taskService;
         $this->user = $user;
         $this->client = $client;

@@ -21,9 +21,13 @@
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 
-    <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
+    <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"
+        type="text/javascript"></script>
+    <script language="JavaScript"
+        src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"
+        type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css"
+        href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
 </head>
 
 <body>
@@ -101,55 +105,19 @@
                                 <ul class="nav navbar-nav">
                                     <li class="active"><a href="#"><span class="glyphicon glyphicon-dashboard"></span>
                                             Dashboard</a></li>
-                                    {{-- <li><a href="#"><span class="glyphicon glyphicon-plane"></span> Active Link</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li> --}}
 
-                                    <!-- Dropdown-->
-                                    {{-- <li class="panel panel-default" id="dropdown">
-                                        <a data-toggle="collapse" href="#dropdown-lvl1">
-                                            <span class="glyphicon glyphicon-align-justify"></span>Product Features<span
-                                                class="caret"></span>
-                                        </a>
-                                        <!-- Dropdown level 1 -->
-                                        <div id="dropdown-lvl1" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul class="nav navbar-nav">
-                                                    {{-- <li><a href="{{route('brand.list')}}">Brands</a></li> --}}
-                                                    {{-- <li><a href=""><span
-                                                                class="glyphicon  glyphicon-th-list"></span>Product</a>
-                                                    </li> --}}
-                                                    <!-- Dropdown level 2 -->
-                                                    {{-- <li class="panel panel-default" id="dropdown">
-                                                        <a data-toggle="collapse" href="#dropdown-lvl2">
-                                                            <span class="glyphicon glyphicon glyphicon-tasks"></span>
-                                                            Category <span class="caret"></span>
-                                                        </a>
-                                                        <div id="dropdown-lvl2" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                <ul class="nav navbar-nav">
-                                                                    <li><a href=""><span
-                                                                                class="glyphicon glyphicon-list-alt"></span>Categories</a>
-                                                                    </li>
-                                                                    <li><a href=""><span
-                                                                                class="glyphicon glyphicon-file"></span>Sub
-                                                                            Categories</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div> --}}
-                                    {{-- </li> --}} 
-
-                                    <li><a href="{{route('index.tasks')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Tasks</a>
+                                    <li><a href="{{ route('index.tasks') }}"><span
+                                                class="glyphicon glyphicon-shopping-cart"></span> Tasks</a>
                                     </li>
-                                    <li><a href=""><span class="glyphicon glyphicon glyphicon-user"></span> Users</a>
+                                    @role('admin')
+                                    <li><a href="{{ route('projects.index') }}"><span
+                                                class="glyphicon glyphicon glyphicon-user"></span> Projects</a>
                                     </li>
-                                    {{-- @role('user') --}}
-                                    <li><a href=""><span class="glyphicon glyphicon glyphicon-user"></span> Roles</a>
+                                    <li><a href="{{ route('users.index') }}"><span class="glyphicon glyphicon glyphicon-user"></span> User</a>
                                     </li>
-                                    {{-- @endrole --}}
+                                    <li><a href="{{ route('clients.index') }}"><span class="glyphicon glyphicon glyphicon-user"></span> Clients</a>
+                                    </li>
+                                    @endrole
 
                                 </ul>
                             </div><!-- /.navbar-collapse -->
@@ -170,39 +138,59 @@
         </p>
     </footer>
     <script type="text/javascript">
-        $(function () {
-              
-          var table = $('#daterange_table').DataTable({
-              processing: true,
-              serverSide: true,
-              ajax: "{{ route('projects.index') }}",
-              pageLength: 10,
-              columns: [
-                  {data: 'id', name: 'id'},
-                  {data: 'title', name: 'title'},
-                  {data: 'description', name: 'description'},
-                  {data: 'user', name: 'user'},
-                  {data: 'client', name: 'client'},
-                  {data: 'deadline', name: 'deadline'},
-                  {data: 'action', name: 'action', orderable: false, searchable: false},
-              ]
-          });
-              
+        $(function() {
+            var table = $('#daterange_table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('projects.index') }}",
+                pageLength: 10,
+                columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'title',
+                        name: 'title'
+                    },
+                    {
+                        data: 'description',
+                        name: 'description'
+                    },
+                    {
+                        data: 'user',
+                        name: 'user'
+                    },
+                    {
+                        data: 'client',
+                        name: 'client'
+                    },
+                    {
+                        data: 'deadline',
+                        name: 'deadline'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
+            });
+
         });
         $(document).ready(function() {
-    
-     $("[data-toggle=tooltip]").tooltip();
-    
-} );
 
-      </script>
+            $("[data-toggle=tooltip]").tooltip();
+
+        });
+    </script>
     {{-- </div> --}}
     <script>
         $(document).ready(function() {
-            // Initialize jQuery UI Datepicker with dd-mm-yy format
             $('#date').datepicker({
-                dateFormat: 'dd-mm-yy', // Format: day-month-year
+                dateFormat: 'dd-mm-yy',
             });
         });
     </script>
+    
 </html>
