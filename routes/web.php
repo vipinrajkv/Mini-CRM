@@ -22,7 +22,6 @@ Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('in
 Route::get('/task', [App\Http\Controllers\TaskController::class, 'index'])->name('index.tasks');
 
 Route::middleware(['auth', 'role:admin'])->group(function (){
-// Route::get('/projects', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects.index');
 Route::resource('projects', App\Http\Controllers\ProjectController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
 Route::resource('clients', App\Http\Controllers\ClientController::class);
@@ -31,5 +30,3 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin', [App\Http\Controllers\UserController::class, 'index'])->name('user.list');
-// Route::get('/logins', [App\Http\Controllers\UserController::class, 'login'])->name('logins');
-// Route::get('/registers', [App\Http\Controllers\UserController::class, 'register'])->name('registers');
