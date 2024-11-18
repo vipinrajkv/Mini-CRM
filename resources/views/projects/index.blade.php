@@ -9,7 +9,7 @@
 	{{ session('error') }}
 </div>
 @endif
-    {{--  <div class="row"> --}}
+<h2 class="text-center">Projects</h2>
     <div class="col-md-10">
         <table id="daterange_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>

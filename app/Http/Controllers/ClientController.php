@@ -5,15 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
+use App\Services\ClientService;
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+    protected $project;
+    protected $user;
+    protected $client;
+    protected $clientService;
+
+    public function __construct(
+        ClientService $clientService,
+        // Project $project,
+        // User $user,
+        Client $client,
+    ) {
+        $this->clientService = $clientService;
+        // $this->project = $project;
+        // $this->user = $user;
+        $this->client = $client;
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request) : JsonResponse|View
     {
-        //
+        if ($request->ajax()) {
+            return  $this->clientService->getClientDetails();
+          }
+  
+          return view('clients.index');
     }
 
     /**

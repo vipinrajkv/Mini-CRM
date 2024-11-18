@@ -20,11 +20,11 @@
                           <a href="#" class="btn btn-warning btn-lg" role="button">{{$totalStatusCount}} <br/>Status Count</a>
                           </div>
                           <div class="col-sm-4 col-md-4 d-flex align-items-center">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Comments</a>
+                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Projects</a>
                             </div>
-                          <div class="col-sm-4 col-md-4 d-flex align-items-center">
+                          {{-- <div class="col-sm-4 col-md-4 d-flex align-items-center">
                           <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Comments</a>
-                            </div>
+                            </div> --}}
                         </div>
                     <form method="GET" action="{{route('index.tasks')}}">
                         <div class="col-sm-2 col-md-2 d-flex align-items-center">
@@ -96,7 +96,6 @@
                             </div>
                         @endif
                         <div class="text-right" style="margin-top: 18px;">
-                        {{-- <a href="{{route('admin.cars.create')}}" class="btn btn-info  btn-sm float-right" role="button">Add Car</a> --}}
                         </div>
                         <table class="table table-striped custab">
                             <thead>
