@@ -14,8 +14,9 @@ use DataTables;
 use Illuminate\View\View;
 use Illuminate\Http\JsonResponse;
 
-class ProjectController extends Controller
+final class ProjectController extends Controller
 {
+    //remove
     protected $project;
     protected $user;
     protected $client;
@@ -27,6 +28,7 @@ class ProjectController extends Controller
         User $user,
         Client $client,
     ) {
+        //remove
         $this->projectService = $projectService;
         $this->project = $project;
         $this->user = $user;
@@ -74,7 +76,7 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(Project $project) : view
     {
         // dd(auth()->user());
         $users = $this->user->pluck('name','id');
