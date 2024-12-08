@@ -10,8 +10,10 @@ use Illuminate\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+//use the final keyword if you are not extending ClientController anywhere
+final class ClientController extends Controller
 {
+    //remove properties and inject directly inside 
     protected $project;
     protected $user;
     protected $client;
@@ -23,6 +25,7 @@ class ClientController extends Controller
         // User $user,
         Client $client,
     ) {
+        //remove
         $this->clientService = $clientService;
         // $this->project = $project;
         // $this->user = $user;
