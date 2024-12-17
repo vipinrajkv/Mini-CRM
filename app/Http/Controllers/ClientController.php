@@ -5,31 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
+use App\Models\Project;
+use App\Models\User;
 use App\Services\ClientService;
 use Illuminate\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-//use the final keyword if you are not extending ClientController anywhere
 final class ClientController extends Controller
 {
-    //remove properties and inject directly inside 
-    protected $project;
-    protected $user;
-    protected $client;
-    protected $clientService;
-
     public function __construct(
-        ClientService $clientService,
-        // Project $project,
-        // User $user,
-        Client $client,
+        protected readonly ClientService $clientService,
+        protected readonly Project $project,
+        protected readonly User $user,
+        protected readonly Client $client,
     ) {
-        //remove
-        $this->clientService = $clientService;
-        // $this->project = $project;
-        // $this->user = $user;
-        $this->client = $client;
     }
     /**
      * Display a listing of the resource.

@@ -16,24 +16,16 @@ use Illuminate\Http\JsonResponse;
 
 final class ProjectController extends Controller
 {
-    //remove
-    protected $project;
-    protected $user;
-    protected $client;
-    protected $projectService;
 
     public function __construct(
-        ProjectService $projectService,
-        Project $project,
-        User $user,
-        Client $client,
+        protected readonly ProjectService $projectService,
+        protected readonly Project $project,
+        protected readonly User $user,
+        protected readonly Client $client,
     ) {
-        //remove
-        $this->projectService = $projectService;
-        $this->project = $project;
-        $this->user = $user;
-        $this->client = $client;
+        
     }
+     
     /**
      * Display a listing of the resource.
      *

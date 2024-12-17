@@ -14,24 +14,19 @@ use App\Enums\TaskStatusEnum;
 
 class TaskController extends Controller
 {
-    //remove this properties
-
     public function __construct(
-        //eg : protected readonly TaskService $taskService,
         protected readonly TaskService $taskService,
-        User $user,
-        Client $client,
-        Project $project,
+        protected readonly User $user,
+        protected readonly Client $client,
+        protected readonly Project $project,
     ) {
-        //romove this. u can directly use this inside constructor params
     }
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $inputData = $request->all() ?: [];
-        //do we need  ?: []
+        $inputData = $request->all();
         $projects = $this->project->pluck('title','id');
         $clients = $this->client->pluck('client_name','id');
         $status = TaskStatusEnum::cases();
